@@ -75,7 +75,13 @@ function App() {
 	return (
 		<div>
 			<Header title="Cache simulator" repoUrl="https://github.com/lcarilla/cache-simultator"></Header>
-
+			{simulationStarted && <div className="mx-5 mb-5">
+				<h3>Simulation Stats:</h3>
+				<li>Cachezeilengröße: {cacheLineSize}</li>
+				<li>Anzahl an Zeilenmengen / Cache-Sets: {cacheSetAmount}</li>
+				<li>Assoziativität / Cachezeilen pro Set: {associativity}</li>
+				<li>Replacement Strategy: {replacementStrategy}</li>
+			</div>}
 			{!simulationStarted && <form onSubmit={onSubmit} className="mx-12">
 				<div className="grid grid-cols-2 gap-2">
 					<InputWithText text="Cachezeilengröße" name="cacheLineSize" type="number" required={true}/>
@@ -99,10 +105,10 @@ function App() {
 			</form>}
 			{simulationStarted && <form onSubmit={onAddress} className="mx-12">
 				<div className="grid grid-cols-2 gap-2">
-					<InputWithText text="Address (Binary format)" name="address" onBlur={handleChange} onChange={(e) => setValue(e.currentTarget.value)}
+					<InputWithText text="Enter Address (Binary format):" name="address" onBlur={handleChange} onChange={(e) => setValue(e.currentTarget.value)}
 								   value={value}/>
 				</div>
-				<div className="w-full flex justify-around my-10">
+				<div className="w-full flex justify-around my-6">
 					<Button onClick={popStack}>Revert last access</Button>
 					<Button type="submit">Simulate Memory Access</Button>
 				</div>

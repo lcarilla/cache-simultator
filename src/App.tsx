@@ -74,7 +74,7 @@ function App() {
 
 	return (
 		<div>
-			<Header title="Cache simulator" repoUrl={"h"}></Header>
+			<Header title="Cache simulator" repoUrl="https://github.com/lcarilla/cache-simultator"></Header>
 
 			{!simulationStarted && <form onSubmit={onSubmit} className="mx-12">
 				<div className="grid grid-cols-2 gap-2">
